@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+  echo:
+    restart: always
+    build: ./echo
+
+  proxy:
+    restart: always
+    build: ./proxy
+    ports:
+      - "8888:8080"
+    links:
+      - echo:fujitsupre-echo
+    environment:
+      echo-ip: fujitsupre-echo
+      echo-port: 8080
+
+
